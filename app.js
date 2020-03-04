@@ -24,7 +24,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(formidableMiddleware());
+app.use(formidableMiddleware({
+    // encoding: 'utf-8',
+    uploadDir: path.join(__dirname, "upload"),
+    keepExtensions: true,
+    multiples: true, // req.files to be arrays of files
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.options('/*', cors())
 app.use(function(err, req, res, next) {
@@ -40,6 +45,8 @@ app.use(function(err, req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use(express.static('build'));
+app.use('/dog', express.static('build'))
 
 
 // catch 404 and forward to error handler

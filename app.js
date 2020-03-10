@@ -4,8 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ffmpeg = require('fluent-ffmpeg');
-// const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
-// ffmpeg.setFfmpegPath(ffmpegPath)
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+ffmpeg.setFfmpegPath(ffmpegPath)
 var fs = require('fs');
 const cors = require('cors');
 const formidableMiddleware = require('express-formidable');
